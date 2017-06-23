@@ -28,7 +28,7 @@ import java.util.List;
 
 public class FBAcitivty extends AppCompatActivity {
     private CallbackManager callbackManager;
-    private LoginManager loginManager;
+    private LoginManager loginManagers;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,12 +41,12 @@ public class FBAcitivty extends AppCompatActivity {
         List<String> permissionNeeds = Arrays.asList("publish_actions");
 
         //this loginManager helps you eliminate adding a LoginButton to your UI
-        loginManager = LoginManager.getInstance();
+        loginManagers = LoginManager.getInstance();
         //loginManager.logInWithReadPermissions(this,permissionNeeds);
 
-        loginManager.logInWithPublishPermissions(this, permissionNeeds);
+        loginManagers.logInWithPublishPermissions(this, permissionNeeds);
 
-        loginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>()
+        loginManagers.registerCallback(callbackManager, new FacebookCallback<LoginResult>()
         {
             @Override
             public void onSuccess(LoginResult loginResult)
